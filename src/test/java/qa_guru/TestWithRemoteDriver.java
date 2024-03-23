@@ -24,7 +24,7 @@ public class TestWithRemoteDriver extends TestBase{
         });
 
         step("Кликаем по кнопке поиска", ()->{
-            $("button[type='submitg']").click();
+            $("button[type='submit']").click();
         });
     }
 }
