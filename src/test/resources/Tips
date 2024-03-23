@@ -1,0 +1,16 @@
+### Настройка Jenkins ###
+
+1) Создаем freestyle проект
+2) Связываем Jenkins со своим проектом в Guthub через https
+3) Проверяем ветку
+4) Добавляем 'Build steps' -> 'Invoke gradle script'
+5) Выбираем версию gradle '7.4.1'
+6) В таск вписываем 'clean {название нужной таски указанной в 'build.gradle'}}'
+7) Добавляем 'Post-build Actions' -> 'Allure report'
+8) Указываем путь до 'allure-results':
+ - Заходим в 'Workspace' или 'Сборочная дериктория'
+ - Находим папку 'build'
+ - Находим папку 'allure-results'
+ - Копируем путь 'build/allure-results/'
+ - Вставляем путь в 'Post-build Actions' -> 'Path'
+9) Собираем билд с смотрим на результат :)
