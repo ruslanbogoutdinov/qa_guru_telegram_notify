@@ -16,7 +16,7 @@ public class TestWithRemoteDriver extends TestBase{
         open("https://github.com/");
 
         $$(".HeaderMenu-item").get(1).hover();
-        $("[aria-labelledby=solutions-for-heading]").$(byText("Enterprise")).click();
+        //$("[aria-labelledby=solutions-for-heading]").$(byText("Enterprise")).click();
         //$("#hero-section-brand-heading").shouldHave(text("The AI-powered developer platform."));
 
         /*step("Открываем сайт Яндекс", ()->{
