@@ -19,9 +19,9 @@ public class TestBase {
         // при запуске данного теста, локальный браузер не должен запускаться
 
         //Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.browser = System.getProperty("browser");
-        Configuration.browserSize = System.getProperty("browserSize");
-        Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.browser = System.getProperty("browser", "opera");
+        Configuration.browserSize = System.getProperty("browserSize", "800X600");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUrl", "selenoid.autotests.cloud/wd/hub");
 
         //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
