@@ -13,7 +13,8 @@ import static io.qameta.allure.Allure.step;
 public class TestWithRemoteDriver extends TestBase{
     @Test
     void searchSelenideInYandex(){
-        open("https://github.com/");
+        //open("https://github.com/");
+        open(System.getProperty("baseUrl"));
 
         $$(".HeaderMenu-item").get(1).hover();
         $("[aria-labelledby=solutions-for-heading]").$(byText("Enterprise")).click();
