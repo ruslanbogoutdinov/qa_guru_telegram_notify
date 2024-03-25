@@ -3,8 +3,9 @@ package qa_guru;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 //@Tag("remote_test")
@@ -12,7 +13,12 @@ import static io.qameta.allure.Allure.step;
 public class TestWithRemoteDriver extends TestBase{
     @Test
     void searchSelenideInYandex(){
-            step("Открываем сайт Яндекс", ()->{
+        open("https://github.com/");
+
+        $$(".HeaderMenu-item").get(1).hover();
+        $("[aria-labelledby=solutions-for-heading]").$(byText("Enterprise")).click();
+        $("#hero-section-brand-heading").shouldHave(text("The AI-powered developer platform."));
+        /*step("Открываем сайт Яндекс", ()->{
             open("https://ya.ru/");
         });
 
@@ -26,6 +32,6 @@ public class TestWithRemoteDriver extends TestBase{
 
         step("Кликаем по кнопке поиска", ()->{
             $("button[type='submit']").click();
-        });
+        });*/
     }
 }
