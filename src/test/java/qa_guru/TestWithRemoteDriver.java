@@ -7,8 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-//@Tag("remote_test")
-@Tag("property_test")
+@Tag("remote_test")
 public class TestWithRemoteDriver extends TestBase{
     @Test
     void searchSelenideInYandex(){
