@@ -12,20 +12,16 @@ import static io.qameta.allure.Allure.step;
 public class TestWithRemoteDriver extends TestBase{
     @Test
     void searchSelenideInYandex(){
-        step("Открываем сайт Яндекса", ()->{
-            open("https://ya.ru/");
+        step("Открываем сайт Google", ()->{
+            open("https://www.google.com/");
         });
 
         step("Кликаем по полю ввода", ()->{
-            $("#text").click();
+            $("[name='q']").click();
         });
 
         step("В поле ввода вводим поисковой запрос", ()->{
-            $("#text").setValue("Selenide");
-        });
-
-        step("Кликаем по кнопке поиска", ()->{
-            $("button[type='submit']").click();
+            $("[name='q']").setValue("Selenide").submit();
         });
     }
 }
