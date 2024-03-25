@@ -22,7 +22,10 @@ public class TestBase {
         // прописываем также логин и пароль в начале
         // при запуске данного теста, локальный браузер не должен запускаться
 
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        String selenoidUrl = System.getProperty("selenoid_url");
+
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@"+selenoidUrl;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

@@ -11,7 +11,7 @@ public class SystemPropertiesTests {
     void simplePropertiesTest(){
         // устанавливаем значение
         //System.setProperty("browser", "opera");
-        System.setProperty("browserVersion", "99.0");
+        //System.setProperty("browserVersion", "99.0");
         // считываем значение
         //String browserName = System.getProperty("browser", "mozilla");
         //String browserVersion = System.getProperty("browserVersion", "99");
