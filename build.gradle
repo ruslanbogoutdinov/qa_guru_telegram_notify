@@ -26,6 +26,7 @@ allure{
 
 dependencies {
     testImplementation(
+            'org.aspectj:aspectjweaver:1.9.22',
             'com.codeborne:selenide:7.2.2',
             'org.junit.jupiter:junit-jupiter-api:5.8.1',
             'org.junit.jupiter:junit-jupiter-engine:5.8.1',
@@ -35,6 +36,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    // для прокидывания properties дальше
+    systemProperties(System.getProperties())
 }
 
 // прописываем таску для запускаемых классов
@@ -47,6 +50,16 @@ task simple_test(type : Test){
 task remote_test(type : Test){
     useJUnitPlatform{
         includeTags("remote_test")
+    }
+}
+
+task property_test(type : Test){
+    useJUnitPlatform{
+        includeTags("property_test")
+    }
+    // чтобы увидеть properties через вывод в консоль
+    testLogging {
+        showStandardStreams = true
     }
 }
 
