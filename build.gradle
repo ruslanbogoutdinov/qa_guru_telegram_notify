@@ -57,6 +57,7 @@ task property_test(type : Test){
     useJUnitPlatform{
         includeTags("property_test")
     }
+    systemProperties(System.getProperties())
     // чтобы увидеть properties через вывод в консоль
     testLogging {
         showStandardStreams = true
