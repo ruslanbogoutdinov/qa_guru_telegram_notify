@@ -14,18 +14,17 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll(){
-        //Configuration.browserSize = "1920x1080";
-        //Configuration.browser = "chrome";
-        //Configuration.browserVersion = "100";
-
         // настройка для remote запуска
         // прописываем также логин и пароль в начале
         // при запуске данного теста, локальный браузер не должен запускаться
 
-        String selenoidUrl = System.getProperty("selenoid_url");
+        Configuration.browser = System.getProperty("browser", "firefox");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browserVersion = System.getProperty("browserVersion", "122.0");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://ya.ru/");
+        Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUrl", "selenoid.autotests.cloud/wd/hub");
 
         //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        Configuration.remote = "https://user1:1234@"+selenoidUrl;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
