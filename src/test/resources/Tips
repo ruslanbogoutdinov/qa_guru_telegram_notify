@@ -1,3 +1,7 @@
+### Проекты на облачном сервере ###
+- qa_guru_proj
+- qa_guru_proj_with_properties
+
 ### Настройка Jenkins ###
 
 1) Создаем freestyle проект
@@ -23,6 +27,16 @@
 4) Внизу где прописана команда запуска тестов, указываем: -Dany_param=${название параметра}
 5) Теперь при запуске теста можно указать параметр для запуска
 
+Пример строчки запуска:
+
+clean ${TASK} "-Dany_param=${ANY_TEXT}" -Dbrowser=${BROWSER} -Duser_name=${USER_NAME}
+
+таким образом, можно делать выборку и для других значией, типо веток и тд, при помощи '${VALUE}'
+
 ### Настройка Jenkins с параметрами в коде проекта ###
 
-1)
+устанавливаем значение:
+System.setProperty("browser", "opera");
+
+считываем значение
+String browserName = System.getProperty("browser", "mozilla");

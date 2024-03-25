@@ -36,7 +36,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    // для прокидывания properties дальше
+    // для прокидывания properties дальше в скрипт сборки
     systemProperties(System.getProperties())
 }
 

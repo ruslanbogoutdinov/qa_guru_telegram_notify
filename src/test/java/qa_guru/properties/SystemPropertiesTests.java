@@ -10,7 +10,7 @@ public class SystemPropertiesTests {
     @Tag("property_test")
     void simplePropertiesTest(){
         // устанавливаем значение
-        //System.setProperty("browser", "opera");
+        System.setProperty("browser", "opera");
         // считываем значение
         String browserName = System.getProperty("browser", "mozilla");
         String browserVersion = System.getProperty("browser_version", "99");
