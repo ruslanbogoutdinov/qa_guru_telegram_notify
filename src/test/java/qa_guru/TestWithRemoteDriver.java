@@ -16,12 +16,16 @@ public class TestWithRemoteDriver extends TestBase{
             open("https://www.google.com/");
         });
 
-        step("Кликаем по полю ввода", ()->{
+        /*step("Кликаем по полю ввода", ()->{
             $("[name='q']").click();
         });
 
         step("В поле ввода вводим поисковой запрос", ()->{
             $("[name='q']").setValue("Selenide").submit();
-        });
+        });*
+
+        step("Кликаем по кнопке поиска", ()->{
+            $("button[type='submit']").click();
+        });*/
     }
 }
