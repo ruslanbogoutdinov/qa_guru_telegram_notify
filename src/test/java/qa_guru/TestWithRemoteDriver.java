@@ -13,7 +13,7 @@ public class TestWithRemoteDriver extends TestBase{
     @Test
     void searchSelenideInYandex(){
         step("Открываем сайт Google", ()->{
-            open("https://www.google.com/");
+            open("https://ya.ru/");
         });
 
         /*step("Кликаем по полю ввода", ()->{
