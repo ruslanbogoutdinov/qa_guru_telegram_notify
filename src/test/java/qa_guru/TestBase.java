@@ -20,8 +20,7 @@ public class TestBase {
         // прописываем также логин и пароль в начале
         // при запуске данного теста, локальный браузер не должен запускаться
 
-        //Configuration.baseUrl = System.getProperty("baseUrl");
-        open("https://github.com/");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://github.com/");
         Configuration.browser = System.getProperty("browser", "opera");
         Configuration.browserSize = System.getProperty("browserSize", "800X600");
         Configuration.browserVersion = System.getProperty("browserVersion", "100.");
