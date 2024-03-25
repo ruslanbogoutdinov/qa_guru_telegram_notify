@@ -14,6 +14,7 @@ public class TestWithRemoteDriver extends TestBase{
     @Test
     void searchSelenideInYandex(){
         //open("https://github.com/");
+        System.out.println("BASE_URL:" +System.getProperty("baseUrl"));
         open(System.getProperty("baseUrl"));
 
         $$(".HeaderMenu-item").get(1).hover();
