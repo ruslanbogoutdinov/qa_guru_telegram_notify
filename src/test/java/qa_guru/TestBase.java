@@ -21,9 +21,9 @@ public class TestBase {
         // при запуске данного теста, локальный браузер не должен запускаться
 
         Configuration.baseUrl = System.getProperty("baseUrl", "https://github.com/");
-        Configuration.browser = System.getProperty("browserName", "opera");
+        Configuration.browser = System.getProperty("browserName", "chrome");
         Configuration.browserSize = System.getProperty("browserSize", "800x600");
-        Configuration.browserVersion = System.getProperty("browserVersion", "106.0");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUrl", "selenoid.autotests.cloud/wd/hub");
 
         //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
