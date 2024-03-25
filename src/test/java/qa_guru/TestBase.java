@@ -18,7 +18,7 @@ public class TestBase {
         // прописываем также логин и пароль в начале
         // при запуске данного теста, локальный браузер не должен запускаться
 
-        Configuration.baseUrl = System.getProperty("baseUrl");
+        //Configuration.baseUrl = System.getProperty("baseUrl");
         Configuration.browser = System.getProperty("browser");
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.browserVersion = System.getProperty("browserVersion");
