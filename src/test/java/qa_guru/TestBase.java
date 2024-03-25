@@ -22,7 +22,7 @@ public class TestBase {
 
         Configuration.baseUrl = System.getProperty("baseUrl", "https://github.com/");
         Configuration.browser = System.getProperty("browser", "firefox");
-        Configuration.browserSize = System.getProperty("browserSize", "800X600");
+        Configuration.browserSize = System.getProperty("browserSize", "800x600");
         Configuration.browserVersion = System.getProperty("browserVersion", "122.0");
         Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUrl", "selenoid.autotests.cloud/wd/hub");
 
