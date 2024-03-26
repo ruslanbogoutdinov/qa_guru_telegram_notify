@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
-@Tag("remote_test")
+@Tag("remote")
 public class TestWithRemoteDriver extends TestBase{
     @Test
     void searchSelenideInYandex(){
