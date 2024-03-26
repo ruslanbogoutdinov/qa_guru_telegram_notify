@@ -48,4 +48,13 @@ curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001990660990
 
 ### Подключаем 'Jenkins' ###
 
-1)
+1) Добавляем файл с 'config.json' через конфигурацию Jenkins:
+Configure -> Build steps -> Add build step -> Create / Update text file
+2) Перетаскиваем данный шаг в самый верх
+3) В 'File Path' вписываем 'notifications/config.json', в 'Text File Content' вписывам body конфига
+4) Жмем по 'Create at Workspace' и 'Overwrite file'
+5) Прописываем в конфиг проектные параметры для:
+ "project": "${JOB_BASE_NAME}"
+ "reportLink": "${BUILD_URL}"
+6) В самом низу жмем по 'Add post-build action' -> 'Post build task'
+7) В поле 'Script' вписываем нашу команду для запуска 'java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.6.1.jar'
