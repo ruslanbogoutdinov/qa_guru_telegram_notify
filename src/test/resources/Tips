@@ -58,3 +58,20 @@ Configure -> Build steps -> Add build step -> Create / Update text file
  "reportLink": "${BUILD_URL}"
 6) В самом низу жмем по 'Add post-build action' -> 'Post build task'
 7) В поле 'Script' вписываем нашу команду для запуска 'java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.6.1.jar'
+
+### Указываем когда присылать уведомления ###
+
+- Если надо уведомлять только тогда, когда билд упал, то в 'Post build task' -> 'Log text' вписываем:
+BUILD FAILED
+
+- Если надо уведомлять только тогда, когда билд завершися успешно, то в 'Post build task' -> 'Log text' вписываем:
+BUILD SUCCESSFUL
+
+Данные логи можно увидеть в 'Console Output' проекта
+
+### Запускаем тесты по расписанию ###
+
+1) Открываем настройки проекта в Jenkins
+2) Находим пункт 'Build Triggers' -> 'Build periodically'
+3) В браузере вбиваем запрос 'cron every minute/day etc'
+4) Копируем значение крона и вставляем в поле 'Schedule'
