@@ -45,11 +45,12 @@ public class TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    /*@AfterEach
+    @AfterEach
     void addAttachments(){
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-        Attach.browserConsoleLogs();
+        // firefox не поддерживает метод вывода логов
+        // Attach.browserConsoleLogs();
         Attach.addVideo();
-    }*/
+    }
 }
