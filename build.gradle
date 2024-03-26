@@ -36,15 +36,17 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    // для прокидывания properties дальше в скрипт сборки
     systemProperties(System.getProperties())
 }
 
-// прописываем таску для запускаемых классов
 task simple_test(type : Test){
     useJUnitPlatform{
         includeTags("simple")
     }
 }
 
-// для запуска тасков через терминал, пишем 'gradle {название таски}'
+task remote_test(type : Test){
+    useJUnitPlatform{
+        includeTags("remote")
+    }
+}

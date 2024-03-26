@@ -1,42 +1,51 @@
-### Проекты на облачном сервере ###
-- qa_guru_proj
-- qa_guru_proj_with_properties
+### Работа с Telegram-bot / API ###
 
-### Настройка Jenkins ###
+ссылка:
+https://gist.github.com/dideler/85de4d64f66c1966788c1b2304b9caf1
 
-1) Создаем freestyle проект
-2) Связываем Jenkins со своим проектом в Guthub через https
-3) Проверяем ветку
-4) Добавляем 'Build steps' -> 'Invoke gradle script'
-5) Выбираем версию gradle '7.4.1'
-6) В таск вписываем 'clean {название нужной таски указанной в 'build.gradle'}}'
-7) Добавляем 'Post-build Actions' -> 'Allure report'
-8) Указываем путь до 'allure-results':
- - Заходим в 'Workspace' или 'Сборочная дериктория'
- - Находим папку 'build'
- - Находим папку 'allure-results'
- - Копируем путь 'build/allure-results/'
- - Вставляем путь в 'Post-build Actions' -> 'Path'
-9) Собираем билд с смотрим на результат :)
+1) Создаем бота через '@BotFather'
+2) Достаем 'username' и 'token' бота
+3) Создаем группу и добавляем туда созданного бота, предоставлям боту права админа
+4) В команду 1 вставляем 'token'
+5) Прописываем данную команду в терминал либо в браузере, но уже без 'curl', если в браузере (должны получить ответ 'ок')
+6) Пишем любое сообщение в группе и обновляем браузер - телеграм бот отслеживает обновления корректно
+7) Достаем 'chat_id'
+8) В команду 2 вставляем 'chat_id' и 'token'
+9) Выполнить данную команду и проверить работает ли бот
 
-### Настройка Jenkins с параметрами ###
+Telegram username: @qa_allure_notify_bot
+Telegram token: 6668644520:AAGFgE6WcPhV-s0rIcUqOHGC1fVlbxhcCjw
+Chat id: -1001990660990
 
-1) Открываем насройки проекта
-2) Кликаем по пунку 'This project is parameterized'
-3) Выбираем 'String Parameter' и вводим значения
-4) Внизу где прописана команда запуска тестов, указываем: -Dany_param=${название параметра}
-5) Теперь при запуске теста можно указать параметр для запуска
+1) Fetch bot updates and look for the chat id:
+curl https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/getUpdates | jq .message.chat.id
+---
+curl https://api.telegram.org/bot6668644520:AAGFgE6WcPhV-s0rIcUqOHGC1fVlbxhcCjw/getUpdates | jq .message.chat.id
+---
+2) Send a message using the HTTP API: https://core.telegram.org/bots/api#sendmessage
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "123456789", "text": "This is a test from curl", "disable_notification": true}' https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage
+---
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001990660990", "text": "This is a test from curl", "disable_notification": true}' https://api.telegram.org/bot6668644520:AAGFgE6WcPhV-s0rIcUqOHGC1fVlbxhcCjw/sendMessage
+---
 
-Пример строчки запуска:
+### Подключаем 'Allure notifications' ###
 
-clean ${TASK} "-Dany_param=${ANY_TEXT}" -Dbrowser=${BROWSER} -Duser_name=${USER_NAME}
+1) Открываем страницу 'https://github.com/qa-guru/allure-notifications'
+2) Переходит в 'Releases' -> 'Latest' и скачиваем 'allure-notifications.jar' файл
+3) В корне проекта создаем папку 'notifications' и туда перетаскиваем скачанный 'jar' файл
+4) Создаем файл 'config.json' и в него вставляем код конфига с репозитория 'https://github.com/qa-guru/allure-notifications'
+5) В файле '.json' удаляем все мессенжеры кроме Telegram
+6) Заполняем параметры 'project', 'environment', 'comment', 'reportLink' любыми данными, в параметр 'allureFolder'
+вписываем путь к allure-report, например 'allure-report/' или build/allure-report/', параметр 'enableChart' делаем
+'true'
+7) Заполняем параметры 'token' и 'chat' соответствующими данными
+8) Для локального запуска и проверки отчета возможно нужно будет вручную создать папку 'allure-report' в корне
+проекта, далее в ней создать папку 'widgets' и в ней файл 'summary.json'
+9) В файл 'summary.json' нужно будет вручную также вставить результаты прохождения тестов из аналогичного файла
+из Jenkins
+9) Запускаем слудющей командой, предварительно проверим пути:
+'java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.6.1.jar'
 
-таким образом, можно делать выборку и для других значией, типо веток и тд, при помощи '${VALUE}'
+### Подключаем 'Jenkins' ###
 
-### Настройка Jenkins с параметрами в коде проекта ###
-
-устанавливаем значение:
-System.setProperty("browser", "opera");
-
-считываем значение
-String browserName = System.getProperty("browser", "mozilla");
+1)
