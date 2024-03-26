@@ -20,7 +20,7 @@ public class TestBase {
         Configuration.baseUrl = System.getProperty("baseUrl");
         Configuration.browser = System.getProperty("browserName", "chrome");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        //Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
+        Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
 
         // настройка для remote запуска
         // прописываем также логин и пароль в начале
@@ -49,7 +49,7 @@ public class TestBase {
     void addAttachments(){
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-        // firefox не поддерживает метод вывода логов
+        // firefox не поддерживает метод вывода логов и выдаст ошибку при попытке запуска
         // Attach.browserConsoleLogs();
         Attach.addVideo();
     }
