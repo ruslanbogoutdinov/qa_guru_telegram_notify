@@ -14,10 +14,13 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll(){
+        // в 'getProperty()' вторым параметром можно указать значение по умолчанию
+        // оно будет применяться тогда, когда данный параметр не будет задаваться удаленно через Jenkins
+
         Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.browser = System.getProperty("browserName");
-        Configuration.browserSize = System.getProperty("browserSize");
-        Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.browser = System.getProperty("browserName", "chrome");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
 
         // настройка для remote запуска
         // прописываем также логин и пароль в начале
