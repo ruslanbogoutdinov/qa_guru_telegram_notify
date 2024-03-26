@@ -15,7 +15,7 @@ public class TestBase {
     @BeforeAll
     static void beforeAll(){
         Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.browser = System.getProperty("browserName", "firefox");
+        Configuration.browser = System.getProperty("browserName", "opera");
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.browserVersion = System.getProperty("browserVersion");
 
