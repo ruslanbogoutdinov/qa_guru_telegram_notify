@@ -47,21 +47,4 @@ task simple_test(type : Test){
     }
 }
 
-task remote_test(type : Test){
-    useJUnitPlatform{
-        includeTags("remote_test")
-    }
-}
-
-task property_test(type : Test){
-    useJUnitPlatform{
-        includeTags("property_test")
-    }
-    systemProperties(System.getProperties())
-    // чтобы увидеть properties через вывод в консоль
-    testLogging {
-        showStandardStreams = true
-    }
-}
-
 // для запуска тасков через терминал, пишем 'gradle {название таски}'

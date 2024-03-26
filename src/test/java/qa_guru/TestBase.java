@@ -14,25 +14,14 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll(){
-        // в 'getProperty()' вторым параметром можно указать значение по умолчанию
-        // оно будет применяться тогда, когда данный параметр не будет задаваться удаленно через Jenkins
-
         Configuration.baseUrl = System.getProperty("baseUrl");
         Configuration.browser = System.getProperty("browserName", "chrome");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
-
-        // настройка для remote запуска
-        // прописываем также логин и пароль в начале
-        // при запуске данного теста, локальный браузер не должен запускаться
-
         Configuration.remote = "https://user1:1234@"+System.getProperty("selenoidUrl", "selenoid.autotests.cloud/wd/hub");
-
-        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                // отображение работы браузера в окне
                 "enableVNC", true,
                 "enableVideo", true
         ));
@@ -49,8 +38,6 @@ public class TestBase {
     void addAttachments(){
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-        // firefox не поддерживает метод вывода логов и выдаст ошибку при попытке запуска
-        // Attach.browserConsoleLogs();
         Attach.addVideo();
     }
 }
